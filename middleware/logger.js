@@ -1,12 +1,11 @@
 const requestLogger = (req, res, next) => {
   const start = Date.now();
   console.log(`${req.method} ${req.url}`);
-
   res.on("finish", () => {
     const duration = Date.now() - start;
     console.log(`${req.method} ${req.url} -> ${res.statusCode} (${duration}ms)`);
   });
-
+  next();  // FIX: Call next() to continue to next middleware
 };
 
 module.exports = requestLogger;

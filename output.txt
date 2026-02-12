@@ -1,0 +1,59 @@
+======================================
+AUTHENTICATION FLOW TEST OUTPUT
+======================================
+Student Name: Mayank Shekhar
+Student Email: mayankshekhar0303@gmail.com.com
+Test Date: [Insert Today's Date]
+Repository: [Your GitHub Repository URL]
+======================================
+
+======================================
+TASK 1: LOGIN
+======================================
+
+Command:
+curl -X POST http://localhost:3000/auth/login -H "Content-Type: application/json" -d "{\"email\":\"mayankshekhar0303@gmail.com.com\",\"password\":\"password123\"}"
+
+Response:
+
+Server Terminal Output (OTP):
+280699
+curl -c cookies.txt -X POST http://localhost:3000/auth/verify-otp -H "Content-Type: application/json" -d "{\"loginSessionId\":\"ink3l\",\"otp\":\"280699\"}"
+
+Response:-{"message":"OTP sent","loginSessionId":"ink3l"}
+
+======================================
+TASK 2: VERIFY OTP
+======================================
+
+Command:
+curl -c cookies.txt -X POST http://localhost:3000/auth/verify-otp -H "Content-Type: application/json" -d "{\"loginSessionId\":\"ink3l\",\"otp\":\"280699\"}"
+Cookie File Created: Yes
+
+======================================
+TASK 3: TOKEN GENERATION
+======================================
+
+Command:
+curl -b cookies.txt -X POST http://localhost:3000/auth/token
+
+Response:
+curl -b cookies.txt -X POST http://localhost:3000/auth/token
+{"access_token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1heWFua3NoZWtoYXIwMzAzQGdtYWlsLmNvbSIsInNlc3Npb25JZCI6ImluazNsIiwiaWF0IjoxNzcwOTAwMTI0LCJleHAiOjE3NzA5MDEwMjR9.SWmX_BjbMz6spY3PO_X6wChFfSt1DHyGQtYIVqGPCTA","expires_in":900}
+
+======================================
+TASK 4: PROTECTED ROUTE ACCESS
+======================================
+
+Command:curl -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1heWFua3NoZWtoYXIwMzAzQGdtYWlsLmNvbSIsInNlc3Npb25JZCI6ImluazNsIiwiaWF0IjoxNzcwOTAwMTI0LCJleHAiOjE3NzA5MDEwMjR9.SWmX_BjbMz6spY3PO_X6wChFfSt1DHyGQtYIVqGPCTA" http://localhost:3000/protected
+
+Response:-{"message":"Access granted","user":{"email":"mayankshekhar0303@gmail.com","sessionId":"ink3l","iat":1770900124,"exp":1770901024},"success_flag":"FLAG-bWF5YW5rc2hla2hhcjAzMDNAZ21haWwuY29tX0NPTVBMRVRFRF9BU1NJR05NRU5U"}
+
+
+======================================
+ALL TESTS COMPLETED SUCCESSFULLY
+======================================
+
+SUCCESS FLAG: FLAG-bWF5YW5rc2hla2hhcjAzMDNAZ21haWwuY29tX0NPTVBMRVRFRF9BU1NJR05NRU5U
+
+======================================
