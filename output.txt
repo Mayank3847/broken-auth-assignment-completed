@@ -3,8 +3,8 @@ AUTHENTICATION FLOW TEST OUTPUT
 ======================================
 Student Name: Mayank Shekhar
 Student Email: mayankshekhar0303@gmail.com.com
-Test Date: [Insert Today's Date]
-Repository: [Your GitHub Repository URL]
+Test Date: 12th February 2026
+Repository: https://github.com/Mayank3847/broken-auth-assignment-completed
 ======================================
 
 ======================================
